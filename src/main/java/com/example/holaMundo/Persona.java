@@ -6,6 +6,10 @@ public class Persona {
     private String apellido;
     private String ciudad;
 
+    public Persona(){
+
+    }
+
     public Persona(String nombre, String documento, String apellido, String ciudad) {
         this.nombre = nombre;
         this.documento = documento;

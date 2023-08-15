@@ -4,18 +4,23 @@ import com.example.holaMundo.exceptions.ApiRequestExeption;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service()
 public class PersonaServicio {
-    ArrayList<Persona> personas;
+    List<Persona> personas;
 
     public PersonaServicio() {
         this.personas = new ArrayList<>();
     }
 
-    public ArrayList<Persona> listarPersonas(){
+    public PersonaServicio(List<Persona> personas) {
+        this.personas = personas;
+    }
+
+    public List<Persona> listarPersonas(){
         return this.personas;
     }
 
@@ -42,6 +47,9 @@ public class PersonaServicio {
     }
 
     public Persona crearPersona(Persona persona){
+        if(persona.getNombre() == null){
+            throw new ApiRequestExeption("El parametro nombre es obligatorio", 401);
+        }
         this.personas.add(persona);
         return persona;
     }

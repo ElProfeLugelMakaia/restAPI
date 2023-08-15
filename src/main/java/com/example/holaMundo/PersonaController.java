@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RestController()
@@ -19,7 +20,7 @@ public class PersonaController {
     }
 
     @GetMapping()
-    public ArrayList<Persona> listarPersonas(){
+    public List<Persona> listarPersonas(){
         return this.service.listarPersonas();
     }
 
