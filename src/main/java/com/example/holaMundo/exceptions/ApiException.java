@@ -1,4 +1,4 @@
-package exceptions;
+package com.example.holaMundo.exceptions;
 
 public class ApiException {
     private int status;

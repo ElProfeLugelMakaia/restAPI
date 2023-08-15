@@ -1,14 +1,9 @@
 package com.example.holaMundo;
 
-import exceptions.ApiRequestExeption;
+import com.example.holaMundo.exceptions.ApiRequestExeption;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -41,9 +36,9 @@ public class PersonaServicio {
                 .filter(p-> p.getDocumento().equals(cedula))
                 .findFirst();
         if(persona.isEmpty()) {
-            throw new ApiRequestExeption("No se encontró la persona", null);
+            throw new ApiRequestExeption("No se encontró la persona", 404);
         }
-        return persona.getNombre();
+        return persona.get().getNombre();
     }
 
     public Persona crearPersona(Persona persona){
